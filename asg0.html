@@ -1,0 +1,140 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vector Graphics Visualizer</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #1a1a2e;
+        color: #e6e6e6;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      canvas {
+        border: 2px solid #4361ee;
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba(67, 97, 238, 0.3);
+        margin-bottom: 15px;
+      }
+      
+      .controls {
+        margin: 10px 0;
+        padding: 15px;
+        background-color: #0f3460;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        width: 90%;
+        max-width: 600px;
+      }
+      
+      label {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+      
+      input[type="number"] {
+        width: 60px;
+        margin-right: 20px;
+        background: #16213e;
+        border: 1px solid #4361ee;
+        border-radius: 4px;
+        padding: 5px;
+        color: #fff;
+      }
+      
+      input[type="button"] {
+        padding: 8px 16px;
+        background: linear-gradient(to right, #4361ee, #3f37c9);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      
+      input[type="button"]:hover {
+        background: linear-gradient(to right, #3f37c9, #4361ee);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      
+      .vector-group {
+        margin-bottom: 10px;
+      }
+      
+      h3 {
+        margin: 10px 0 5px 0;
+        color: #4cc9f0;
+      }
+      
+      .operations {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #4361ee;
+      }
+      
+      select {
+        background: #16213e;
+        color: #fff;
+        border: 1px solid #4361ee;
+        border-radius: 4px;
+        padding: 5px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+ 
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+    <div class="controls">
+      <div class="vector-group">
+        <h3>Vector 1</h3>
+        <label for="v1_x">X Coordinate:</label>
+        <input type="number" id="v1_x" value="2.25" step="0.25">
+        
+        <label for="v1_y">Y Coordinate:</label>
+        <input type="number" id="v1_y" value="2.25" step="0.25">
+      </div>
+      
+      <div class="vector-group">
+        <h3>Vector 2</h3>
+        <label for="v2_x">X Coordinate:</label>
+        <input type="number" id="v2_x" value="1.0" step="0.25">
+        
+        <label for="v2_y">Y Coordinate:</label>
+        <input type="number" id="v2_y" value="-1.0" step="0.25">
+      </div>
+      
+      <input type="button" id="drawButton" value="Draw Vectors" onclick="handleDrawEvent()">
+      
+      <div class="operations">
+        <h3>Vector Operations</h3>
+        <select id="operation">
+          <option value="add">Add (v1 + v2)</option>
+          <option value="sub">Subtract (v1 - v2)</option>
+          <option value="mul">Multiply by scalar</option>
+          <option value="div">Divide by scalar</option>
+          <option value="magnitude">Magnitude</option>
+          <option value="normalize">Normalize</option>
+          <option value="angle">Angle between</option>
+          <option value="area">Area</option>
+        </select>
+        
+        <input type="number" id="scalar" value="2" step="0.5" placeholder="Scalar value">
+        
+        <input type="button" id="operationButton" value="Perform Operation" onclick="handleDrawOperationEvent()">
+      </div>
+    </div>
+
+    <script src="lib/cuon-matrix-cse160.js"></script>
+    <script src="asg0.js"></script>
+  </body>
+</html>
