@@ -35,6 +35,11 @@
             margin-bottom: 30px;
         }
         
+        h2 {
+            color: #4cc9f0;
+            margin: 30px 0 15px 0;
+        }
+        
         p {
             margin-bottom: 25px;
             line-height: 1.6;
@@ -51,6 +56,7 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            margin: 0 10px 15px 10px;
         }
         
         .btn:hover {
@@ -59,34 +65,44 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
         
-        .redirect-info {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #a0a0a0;
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .assignment {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(67, 97, 238, 0.3);
+        }
+        
+        .assignment:last-child {
+            border-bottom: none;
         }
     </style>
-    <meta http-equiv="refresh" content="5;url=src/asg0.html">
 </head>
 <body>
     <div class="container">
-        <h1>Vector Graphics Visualizer</h1>
-        <p>Welcome to the CSE160 Vector Graphics Assignment. This application allows you to visualize and manipulate vectors in 2D space.</p>
-        <p>You will be redirected to the application in 5 seconds.</p>
-        <a href="src/asg0.html" class="btn">Go to Application Now</a>
-        <div class="redirect-info">
-            If you are not redirected automatically, click the button above.
+        <h1>CSE160 Vector Graphics</h1>
+        <p>Welcome to the CSE160 Computer Graphics assignments. Select which assignment you would like to view:</p>
+        
+        <div class="assignment">
+            <h2>Assignment 0: Vector Operations</h2>
+            <p>Visualize and manipulate vectors in 2D space, perform vector operations like add, subtract, multiply, normalize, and more.</p>
+            <div class="buttons">
+                <a href="src/asg0.html" class="btn">View Assignment 0</a>
+            </div>
+        </div>
+        
+        <div class="assignment">
+            <h2>Assignment 1</h2>
+            <p>Explore advanced graphics techniques and continued development of vector operations and visualization.</p>
+            <div class="buttons">
+                <a href="src/asg1.html" class="btn">View Assignment 1</a>
+            </div>
         </div>
     </div>
-    
-    <script>
-        let seconds = 5;
-        setInterval(function() {
-            seconds--;
-            if (seconds > 0) {
-                document.querySelector('p:nth-of-type(2)').textContent = 
-                    `You will be redirected to the application in ${seconds} second${seconds !== 1 ? 's' : ''}.`;
-            }
-        }, 1000);
-    </script>
 </body>
 </html> 

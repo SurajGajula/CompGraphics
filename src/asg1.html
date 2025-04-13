@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Shape Painter</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #1a1a2e;
+        color: #e6e6e6;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      canvas {
+        border: 2px solid #4361ee;
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba(67, 97, 238, 0.3);
+        margin-bottom: 15px;
+      }
+      
+      h2, h3 {
+        color: #4cc9f0;
+        margin: 15px 0;
+      }
+      
+      p {
+        max-width: 600px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      
+      .controls {
+        background-color: #0f3460;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 10px 0;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      
+      .control-group {
+        margin-bottom: 20px;
+      }
+      
+      .slider-container {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+      }
+      
+      .slider-label {
+        width: 100px;
+      }
+      
+      .slider {
+        flex-grow: 1;
+        height: 10px;
+        -webkit-appearance: none;
+        border-radius: 5px;
+        background: #16213e;
+        outline: none;
+      }
+      
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #4361ee;
+        cursor: pointer;
+      }
+      
+      .slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #4361ee;
+        cursor: pointer;
+      }
+      
+      button {
+        background: linear-gradient(to right, #4361ee, #3f37c9);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      
+      button:hover {
+        background: linear-gradient(to right, #3f37c9, #4361ee);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 10px 0;
+      }
+      
+      .color-preview {
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        margin-left: 10px;
+        border: 1px solid white;
+        background-color: rgb(255, 0, 0);
+      }
+      
+      .slider-value {
+        min-width: 30px;
+        text-align: right;
+        margin-left: 10px;
+      }
+      
+      .small-note {
+        font-size: 0.8em;
+        color: #999;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <h2>Interactive Drawing Application</h2>
+    
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+    
+    <div class="controls">
+      <div class="control-group">
+        <h3>Shape Selection</h3>
+        <div class="button-group">
+          <button id="pointButton">Point</button>
+          <button id="triangleButton">Triangle</button>
+          <button id="circleButton">Circle</button>
+          <button id="clearButton">Clear Canvas</button>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <h3>Color Controls</h3>
+        <div class="slider-container">
+          <div class="slider-label">Red:</div>
+          <input type="range" min="0" max="100" value="100" class="slider" id="redSlider">
+          <div class="color-preview" id="colorPreview"></div>
+        </div>
+        <div class="slider-container">
+          <div class="slider-label">Green:</div>
+          <input type="range" min="0" max="100" value="0" class="slider" id="greenSlider">
+        </div>
+        <div class="slider-container">
+          <div class="slider-label">Blue:</div>
+          <input type="range" min="0" max="100" value="0" class="slider" id="blueSlider">
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <h3>Size Control</h3>
+        <div class="slider-container">
+          <div class="slider-label">Shape Size:</div>
+          <input type="range" min="1" max="64" value="10" class="slider" id="sizeSlider">
+          <div class="slider-value" id="sizeValue">10</div>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <h3>Circle Settings</h3>
+        <div class="slider-container">
+          <div class="slider-label">Segments:</div>
+          <input type="range" min="3" max="64" value="24" class="slider" id="segmentsSlider">
+          <div class="slider-value" id="segmentsValue">24</div>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <h3>Special Actions</h3>
+        <div class="button-group">
+          <button id="draw160Button">Draw Centipede</button>
+        </div>
+      </div>
+    </div>
+    
+    <p>Paint shapes on the canvas and use the special actions to draw the centipede.</p>
+
+    <script src="asg1.js"></script>
+  </body>
+</html>
