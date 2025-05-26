@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Assignment 4 - WebGL Lighting</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #uiContainer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .control-group {
+            margin-bottom: 15px;
+        }
+        .slider-container {
+            margin: 10px 0;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .slider {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="glCanvas"></canvas>
+    <div id="uiContainer">
+        <div class="control-group">
+            <button id="toggleNormalVis">Toggle Normal Visualization</button>
+            <button id="lightOnOff">Turn Light Off</button>
+            <button id="lightModeSwitch">Switch to Point Light</button>
+        </div>
+        <div class="control-group">
+            <div class="slider-container">
+                <label>Light X Position:</label>
+                <input type="range" id="lightX" class="slider" min="-10" max="10" step="0.1" value="0">
+            </div>
+            <div class="slider-container">
+                <label>Light Y Position:</label>
+                <input type="range" id="lightY" class="slider" min="-10" max="10" step="0.1" value="5">
+            </div>
+            <div class="slider-container">
+                <label>Light Z Position:</label>
+                <input type="range" id="lightZ" class="slider" min="-10" max="10" step="0.1" value="5">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="slider-container">
+                <label>Light Red:</label>
+                <input type="range" id="lightR" class="slider" min="0" max="1" step="0.01" value="1">
+            </div>
+            <div class="slider-container">
+                <label>Light Green:</label>
+                <input type="range" id="lightG" class="slider" min="0" max="1" step="0.01" value="1">
+            </div>
+            <div class="slider-container">
+                <label>Light Blue:</label>
+                <input type="range" id="lightB" class="slider" min="0" max="1" step="0.01" value="1">
+            </div>
+        </div>
+        <div class="control-group">
+            <button id="toggleAnimation">Toggle Animation</button>
+        </div>
+        <div class="control-group">
+            <div class="slider-container">
+                <label>Spotlight Direction X:</label>
+                <input type="range" id="spotlightDirX" class="slider" min="-1" max="1" step="0.1" value="0">
+            </div>
+            <div class="slider-container">
+                <label>Spotlight Direction Y:</label>
+                <input type="range" id="spotlightDirY" class="slider" min="-1" max="1" step="0.1" value="-1">
+            </div>
+            <div class="slider-container">
+                <label>Spotlight Direction Z:</label>
+                <input type="range" id="spotlightDirZ" class="slider" min="-1" max="1" step="0.1" value="0">
+            </div>
+            <div class="slider-container">
+                <label>Spotlight Angle (degrees):</label>
+                <input type="range" id="spotlightAngle" class="slider" min="0" max="45" step="1" value="12.5">
+            </div>
+        </div>
+    </div>
+    <script src="asg4.js"></script>
+</body>
+</html>
